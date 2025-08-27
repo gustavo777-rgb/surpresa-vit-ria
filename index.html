@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Vitória (gata) 💖</title>
+  <style>
+    body { font-family: Arial, system-ui, sans-serif; margin: 0; padding: 0; background: linear-gradient(135deg, #8e44ad, #c39bd3); color:#333; text-align:center; }
+    header { padding: 42px 16px; }
+    h1 { font-size: 2.1rem; margin: 0 0 14px; }
+    p { font-size: 1.1rem; margin: 0 auto; max-width: 680px; }
+    .button { margin-top: 18px; padding: 12px 18px; background:#ff4d6d; color:#fff; border:0; border-radius:12px; font-size:1rem; cursor:pointer; }
+    .button:hover{ filter:brightness(.95) }
+    #quiz { width:min(720px, 92vw); margin: 0 auto 40px; }
+    .question { display:none; margin-top:24px; }
+    .question h2{ font-size:1.3rem; margin:0 0 12px }
+    .option{ display:block; margin:10px auto; padding:10px 14px; border:0; border-radius:10px; background:#fff; cursor:pointer; width:80%; max-width:520px; font-size:1rem }
+    .final-screen{ display:none; margin-top:26px; font-size:1.2rem; font-weight:700; color:#fff }
+    .choice-btns{ display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:12px }
+    .choice-btns button{ padding:12px 18px; border:0; border-radius:12px; font-size:1rem; cursor:pointer }
+    #sim{ background:#28a745; color:#fff }
+    #nao{ background:#dc3545; color:#fff }
+    #sendMailBtn{ margin-top:20px; background:#007bff; color:#fff }
+    footer{ margin-top:36px; padding:16px; background:rgba(255,255,255,.25) }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Oi minha linda. Então Vitória (gata) quer brincar? 💕</h1>
+    <p>Fiz isso aqui rapidinho pra vc, simples, mas fiz com cuidado. Espero que arranque pelo menos um sorriso seu :) </p>
+    <button class="button" id="startBtn">Abrir a Surpresa</button>
+  </header>
+
+  <div id="quiz">
+    <!-- Perguntas (mesmas 10 anteriores) -->
+    <div class="question" id="q1">
+      <h2>Qual o seu sorvete favorito?</h2>
+      <button class="option" onclick="answer('Sorvete favorito','Chocolate','q1','q2')">Chocolate</button>
+      <button class="option" onclick="answer('Sorvete favorito','Morango','q1','q2')">Morango</button>
+      <button class="option" onclick="answer('Sorvete favorito','Baunilha','q1','q2')">Baunilha</button>
+      <button class="option" onclick="answer('Sorvete favorito','Napolitano','q1','q2')">Napolitano</button>
+    </div>
+    <div class="question" id="q2">
+      <h2>Qual a sua cor favorita?</h2>
+      <button class="option" onclick="answer('Cor favorita','Vermelho','q2','q3')">Vermelho</button>
+      <button class="option" onclick="answer('Cor favorita','Azul','q2','q3')">Azul</button>
+      <button class="option" onclick="answer('Cor favorita','Rosa','q2','q3')">Rosa</button>
+      <button class="option" onclick="answer('Cor favorita','Preto','q2','q3')">Preto</button>
+    </div>
+    <div class="question" id="q3">
+      <h2>Qual o seu herói favorito?</h2>
+      <button class="option" onclick="answer('Herói favorito','Homem-Aranha','q3','q4')">Homem-Aranha</button>
+      <button class="option" onclick="answer('Herói favorito','Batman','q3','q4')">Batman</button>
+      <button class="option" onclick="answer('Herói favorito','Flash','q3','q4')">Flash</button>
+      <button class="option" onclick="answer('Herói favorito','Mulher-Maravilha','q3','q4')">Mulher-Maravilha</button>
+    </div>
+    <div class="question" id="q4">
+      <h2>Que tipo de música você prefere?</h2>
+      <button class="option" onclick="answer('Música preferida','Pop','q4','q5')">Pop</button>
+      <button class="option" onclick="answer('Música preferida','Sertanejo','q4','q5')">Sertanejo</button>
+      <button class="option" onclick="answer('Música preferida','Rock','q4','q5')">Rock</button>
+      <button class="option" onclick="answer('Música preferida','MPB','q4','q5')">MPB</button>
+    </div>
+    <div class="question" id="q5">
+      <h2>Pet favorito?</h2>
+      <button class="option" onclick="answer('Pet favorito','Gato','q5','q6')">Gato</button>
+      <button class="option" onclick="answer('Pet favorito','Cachorro','q5','q6')">Cachorro</button>
+      <button class="option" onclick="answer('Pet favorito','Pássaro','q5','q6')">Pássaro</button>
+      <button class="option" onclick="answer('Pet favorito','Peixe','q5','q6')">Peixe</button>
+    </div>
+    <div class="question" id="q6">
+      <h2>Encontro ideal?</h2>
+      <button class="option" onclick="answer('Encontro ideal','Praia','q6','q7')">Praia</button>
+      <button class="option" onclick="answer('Encontro ideal','Cinema','q6','q7')">Cinema</button>
+      <button class="option" onclick="answer('Encontro ideal','Parque','q6','q7')">Parque</button>
+      <button class="option" onclick="answer('Encontro ideal','Cafeteria','q6','q7')">Cafeteria</button>
+    </div>
+    <div class="question" id="q7">
+      <h2>Estação do ano preferida?</h2>
+      <button class="option" onclick="answer('Estação preferida','Verão','q7','q8')">Verão</button>
+      <button class="option" onclick="answer('Estação preferida','Inverno','q7','q8')">Inverno</button>
+      <button class="option" onclick="answer('Estação preferida','Outono','q7','q8')">Outono</button>
+      <button class="option" onclick="answer('Estação preferida','Primavera','q7','q8')">Primavera</button>
+    </div>
+    <div class="question" id="q8">
+      <h2>Tipo de filme preferido?</h2>
+      <button class="option" onclick="answer('Filme preferido','Ação','q8','q9')">Ação</button>
+      <button class="option" onclick="answer('Filme preferido','Comédia','q8','q9')">Comédia</button>
+      <button class="option" onclick="answer('Filme preferido','Romance','q8','q9')">Romance</button>
+      <button class="option" onclick="answer('Filme preferido','Terror','q8','q9')">Terror</button>
+    </div>
+    <div class="question" id="q9">
+      <h2>Hobby preferido?</h2>
+      <button class="option" onclick="answer('Hobby preferido','Ler','q9','q10')">Ler</button>
+      <button class="option" onclick="answer('Hobby preferido','Jogar','q9','q10')">Jogar</button>
+      <button class="option" onclick="answer('Hobby preferido','Dançar','q9','q10')">Dançar</button>
+      <button class="option" onclick="answer('Hobby preferido','Cozinhar','q9','q10')">Cozinhar</button>
+    </div>
+    <div class="question" id="q10">
+      <h2>Qual horário do dia você mais gosta?</h2>
+      <button class="option" onclick="answer('Horário favorito','Manhã','q10','final')">Manhã</button>
+      <button class="option" onclick="answer('Horário favorito','Tarde','q10','final')">Tarde</button>
+      <button class="option" onclick="answer('Horário favorito','Noite','q10','final')">Noite</button>
+      <button class="option" onclick="answer('Horário favorito','Madrugada','q10','final')">Madrugada</button>
+    </div>
+
+    <!-- Final -->
+    <div class="final-screen" id="final">
+      <p>🎉 Parabéns! Você tem 100% de compatibilidade com o Guto 💖<br>Deseja aceitar isso?</p>
+      <div class="choice-btns" id="choices">
+        <button id="sim" onclick="aceitou()">Sim</button>
+        <button id="nao" onclick="swapButtons(event)">Não</button>
+      </div>
+      <button class="button" id="sendMailBtn" style="display:none">📧 Me envie as respostas por e-mail aqui</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>Com carinho, Guto</p>
+  </footer>
+
+  <script>
+    const answers = [];
+    const startBtn = document.getElementById('startBtn');
+    const sendMailBtn = document.getElementById('sendMailBtn');
+
+    startBtn.addEventListener('click', ()=>{
+      startBtn.style.display='none';
+      show('q1');
+    });
+
+    function show(id){ document.getElementById(id).style.display='block'; }
+    function hide(id){ document.getElementById(id).style.display='none'; }
+
+    function answer(pergunta, resposta, atual, proxima){
+      answers.push({ pergunta, resposta });
+      hide(atual);
+      if(proxima === 'final'){
+        show('final');
+        sendMailBtn.style.display = 'inline-block';
+        sendMailBtn.addEventListener('click', ()=>{
+          window.location.href = buildMailto();
+        });
+      } else {
+        show(proxima);
+      }
+    }
+
+    function buildMailto(){
+      const to = 'gustavosousa3110@gmail.com';
+      const subject = encodeURIComponent('Respostas do quiz de compatibilidade – Vitória (gata)');
+      const bodyLines = answers.map((a,i)=> `${i+1}. ${a.pergunta}: ${a.resposta}`);
+      const body = encodeURIComponent(bodyLines.join('\n'));
+      return `mailto:${to}?subject=${subject}&body=${body}`;
+    }
+
+    function swapButtons(e){
+      e.preventDefault();
+      const choices = document.getElementById('choices');
+      const sim = document.getElementById('sim');
+      const nao = document.getElementById('nao');
+      if(choices.firstElementChild.id === 'sim'){
+        choices.insertBefore(nao, sim);
+      } else {
+        choices.insertBefore(sim, nao);
+      }
+    }
+
+    function aceitou(){
+      const final = document.getElementById('final');
+      final.innerHTML = '<h2>💖 Sabia que você ia aceitar! 💖<br>Agora não tem mais volta, Vitória (gata)! 😏</h2>';
+    }
+  </script>
+</body>
+</html>
